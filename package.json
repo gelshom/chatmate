@@ -1,0 +1,26 @@
+{
+  "name": "chatmate-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Full backend for the ChatMate messenger with real-time messaging, stories, friendships, groups, uploads and more.",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "express-rate-limit": "^7.1.5",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mime-types": "^2.1.35",
+    "multer": "^2.4.0",
+    "nodemailer": "^6.9.9",
+    "socket.io": "^4.8.1",
+    "speakeasy": "^2.0.0"
+  }
+}
