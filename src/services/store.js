@@ -3,6 +3,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { config } from '../config.js';
 
+if (config.storeType === 'remote') {
+  throw new Error('[store] Remote storage is not implemented yet. Implement a store adapter in server/src/services/store.remote.js and set STORE_TYPE=remote.' );
+}
+
 /**
  * Lightweight JSON document store.
  *

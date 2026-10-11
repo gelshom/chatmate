@@ -34,10 +34,11 @@ export const config = {
   jwtRefreshSecret,
   jwtAccessTtl: env.JWT_ACCESS_TTL || '15m',
   jwtRefreshTtl: env.JWT_REFRESH_TTL || '30d',
-  // Allow both common Vite dev ports locally; production requires explicit origins.
   corsOrigin,
   dbFile: env.DB_FILE || path.resolve(__dirname, '../data/app.json'),
   uploadDir: env.UPLOAD_DIR || path.resolve(__dirname, '../uploads'),
+  storeType: env.STORE_TYPE === 'remote' ? 'remote' : 'local',
+  uploadStore: env.UPLOAD_STORE === 's3' ? 's3' : 'local',
   smtp: {
     host: env.SMTP_HOST || null,
     port: Number(env.SMTP_PORT) || 587,
@@ -47,6 +48,11 @@ export const config = {
   },
   otpIssuer: env.OTP_ISSUER || 'ChatMate',
   adminEmail: String(env.ADMIN_EMAIL || '').trim().toLowerCase(),
+  // Google OAuth 2.0. The /auth/google flow keeps failing closed until real
+  // credentials are set here and server-side token verification is wired up.
+  googleClientId: env.GOOGLE_CLIENT_ID ? env.GOOGLE_CLIENT_ID.trim() : '',
+  googleClientSecret: env.GOOGLE_CLIENT_SECRET ? env.GOOGLE_CLIENT_SECRET.trim() : '',
+  googleCallbackUrl: env.GOOGLE_CALLBACK_URL ? env.GOOGLE_CALLBACK_URL.trim() : '',
 };
 
 export const SERVER_ROOT = path.resolve(__dirname, '..');

@@ -3,6 +3,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import multer from 'multer';
 import { config } from '../config.js';
+
+if (config.uploadStore === 's3') {
+  throw new Error('[upload] S3 object storage is not implemented yet. Use UPLOAD_DIR (local disk) or implement an S3 adapter.' );
+}
 import { ApiError } from './error.js';
 
 fs.mkdirSync(config.uploadDir, { recursive: true });
